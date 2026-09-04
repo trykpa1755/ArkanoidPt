@@ -37,6 +37,7 @@ public class BricksGenerator : MonoBehaviour
     {
         GameManager.instance.bricks.Clear();
         GenerateBricks(levels[number - 1]);
+        GameManager.instance.UpdateUI();
     }
 
     public void GenerateBricks(int[,] array)

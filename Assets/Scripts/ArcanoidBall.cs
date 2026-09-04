@@ -35,6 +35,7 @@ public class ArcanoidBall : MonoBehaviour
             GameManager.instance.lives--;
             StopBall();
             GameManager.instance.gameRun = false;
+            GameManager.instance.UpdateUI();
             if(GameManager.instance.lives <= 0)
             {
                 GameManager.instance.EndGame(false);

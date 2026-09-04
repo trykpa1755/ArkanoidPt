@@ -22,6 +22,7 @@ public class BricksScript : MonoBehaviour
             {
                 GameManager.instance.bricks.Remove(this.gameObject);
                 Destroy(gameObject); //Zniszcz obiekt
+                GameManager.instance.UpdateUI();
             }
         }
     }

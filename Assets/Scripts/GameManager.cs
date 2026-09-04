@@ -1,9 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject EndGameText;
+    public TMP_Text bricksCounter;
+    public TMP_Text livesCounter;
+    public TMP_Text levelCounter;
+    public TMP_Text winText;
+
     //Instancja naszego Game Managera
     public static GameManager instance;
     //Lista cegie³ek
@@ -28,7 +35,9 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         currentLevel = 1;
-        lives = 3;        
+        lives = 3;   
+        
+        EndGameText.SetActive(false);
         
     }
 
@@ -78,9 +87,19 @@ public class GameManager : MonoBehaviour
     //Funkcja koñcz¹ca grê
     public void EndGame(bool win)
     {
+        EndGameText.SetActive(true);
         gameRun = false;
         string txt = win ? "Wygrana!" : "Przegrana!";
+        winText.text = win ? "Wygrana!" : "Przegrana!";
         Debug.Log(txt);
         ball.StopBall();
     }
+
+    public void UpdateUI()
+    {
+        bricksCounter.text = "Bricks to destroy: " + bricks.Count;
+        livesCounter.text = "Lives: " + lives.ToString();
+        levelCounter.text = "Level: " + currentLevel.ToString();
+    }
+
 }
